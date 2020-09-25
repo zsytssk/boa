@@ -7,11 +7,54 @@
       "type": "process",
       "label": "Cargo Run",
       "command": "cargo",
-      "args": ["run"],
-      "problemMatcher": ["$rustc"],
+      "args": ["run", "--bin", "boa", "./tests/js/test.js"],
       "group": {
         "kind": "build",
         "isDefault": true
+      },
+      "options": {
+        "env": {
+          "RUST_BACKTRACE": "full"
+        }
+      },
+      "presentation": {
+        "clear": true
+      }
+    },
+    {
+      "type": "process",
+      "label": "Cargo Run (Profiler)",
+      "command": "cargo",
+      "args": ["run", "--features", "Boa/profiler", "../tests/js/test.js"],
+      "group": "build",
+      "options": {
+        "env": {
+          "RUST_BACKTRACE": "full"
+        },
+        "cwd": "${workspaceFolder}/boa_cli"
+      },
+      "presentation": {
+        "clear": true
+      }
+    },
+    {
+      "type": "process",
+      "label": "Get Tokens",
+      "command": "cargo",
+      "args": ["run", "--", "-t=Debug", "./tests/js/test.js"],
+      "group": "build",
+      "presentation": {
+        "clear": true
+      }
+    },
+    {
+      "type": "process",
+      "label": "Get AST",
+      "command": "cargo",
+      "args": ["run", "--", "-a=Debug", "./tests/js/test.js"],
+      "group": "build",
+      "presentation": {
+        "clear": true
       }
     },
     {
@@ -19,11 +62,20 @@
       "label": "Cargo Test",
       "command": "cargo",
       "args": ["test"],
-      "problemMatcher": ["$rustc"],
       "group": {
         "kind": "test",
         "isDefault": true
+      },
+      "presentation": {
+        "clear": true
       }
+    },
+    {
+      "type": "process",
+      "label": "Cargo Test Build",
+      "command": "cargo",
+      "args": ["test", "--no-run"],
+      "group": "build"
     }
   ]
 }

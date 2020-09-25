@@ -1,30 +1,49 @@
-### Boa
+# Boa
 
-This is an experimental Javascript lexer, parser and Just-in-Time compiler written in Rust. Currently, it has support for some of the language.  
-[![Build Status](https://travis-ci.com/jasonwilliams/boa.svg?branch=master)](https://travis-ci.com/jasonwilliams/boa)
+<p align="center">
+    <img
+      alt="logo"
+      src="./assets/logo.svg"
+      width="30%"
+    />
+</p>
+
+This is an experimental Javascript lexer, parser and compiler written in Rust.
+Currently, it has support for some of the language.
+
+[![Build Status][build_badge]][build_link]
+[![codecov](https://codecov.io/gh/boa-dev/boa/branch/master/graph/badge.svg)](https://codecov.io/gh/boa-dev/boa)
 [![](http://meritbadge.herokuapp.com/boa)](https://crates.io/crates/boa)
 [![](https://docs.rs/Boa/badge.svg)](https://docs.rs/Boa/)
 
-This project is an attempted rewrite of Bebbington's js.rs. Most of the Rust code has been rewritten from scratch.
+[build_badge]: https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fboa-dev%2Fboa%2Fbadge&style=flat
+[build_link]: https://actions-badge.atrox.dev/boa-dev/boa/goto
 
-#### Live Demo
+## Live Demo (WASM)
 
-https://jasonwilliams.github.io/boa/
+<https://boa-dev.github.io/boa/>
 
-You can get more verbose errors when running from the commnand line
+You can get more verbose errors when running from the command line.
 
-### Contributing
+## Development documentation
 
-If you don't already have Rust installed rustup is the recommended tool to use. It will install Rust and allow you to switch between nightly, stable and beta. You can also install additional components.
+You can check the internal development docs at <https://boa-dev.github.io/boa/doc>.
 
-```
-curl https://sh.rustup.rs -sSf | sh
-```
+## Benchmarks
 
-Then simply clone this project and `cargo build`
-To develop on the web assembly side you can run `yarn serve` then go to `http://localhost:8080`
+See [Benchmarks](https://boa-dev.github.io/boa/dev/bench/).
 
-#### Web Assembly
+## Contributing
+
+Please, check the [CONTRIBUTING.md](CONTRIBUTING.md) file to know how to
+contribute in the project. You will need Rust installed and an editor. We have
+some configurations ready for VSCode.
+
+### Debugging
+
+Check [debugging.md](./docs/debugging.md) for more info on debugging.
+
+### Web Assembly
 
 This interpreter can be exposed to javascript!
 You can build the example locally with:
@@ -34,26 +53,53 @@ $ yarn install
 $ yarn serve
 ```
 
-In the console you can use `window.evaluate` to pass JavaScript in
+In the console you can use `window.evaluate` to pass JavaScript in.
+To develop on the web assembly side you can run `yarn serve` then go to `http://localhost:8080`.
 
-#### Roadmap
+## Roadmap
 
-- ~string.length~ - works in 0.1.5
-- Better lexing of numbers
-- Adding support for constructors - half working, in progress
-- ~better environment and scope support~ - Finished (05/05/2019)
-- ~`let` and `const` support~
-- Better error output
-- Passing [test262](https://github.com/tc39/test262)
+See [Milestones](https://github.com/boa-dev/boa/milestones).
 
-#### Usage
+## Changelog
 
-- Checkout this project
-- Build `cargo build`
-- `cargo run`
-- You can make changes to tests/js/test.js and build again
-- If any JS doesn't work its a bug! Please raise an issue
+See [CHANGELOG.md](./CHANGELOG.md).
 
-#### Example
+## Usage
+
+- Clone this repo.
+- Run with `cargo run -- test.js` where `test.js` is an existing JS file.
+- If any JS doesn't work then it's a bug. Please raise an issue!
+
+## Profiling
+
+See [Profiling](./docs/profiling.md)
+
+## Command-line Options
+
+```
+USAGE:
+    boa_cli [OPTIONS] [FILE]...
+
+FLAGS:
+    -h, --help       Prints help information
+    -V, --version    Prints version information
+
+OPTIONS:
+    -a, --dump-ast <FORMAT>       Dump the abstract syntax tree (ast) to stdout with the given format [possible values: Debug, Json,
+                                  JsonPretty]
+
+ARGS:
+    <FILE>...    The JavaScript file(s) to be evaluated
+```
+
+## Communication
+
+Feel free to contact us on [Discord](https://discord.gg/tUFFk9Y).
+
+## Example
 
 ![Example](docs/img/latestDemo.gif)
+
+## License
+
+This project is licensed under the [Unlicense](./LICENSE-UNLICENSE) or [MIT](./LICENSE-MIT) licenses, at your option.
